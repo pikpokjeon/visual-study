@@ -8,7 +8,6 @@ export const computer = [
   { title: '인터넷', path: 'internet', publish: false },
   { title: '하드웨어', path: 'hardware', publish: false },
   { title: '소프트웨어', path: 'software', publish: false },
-  { title: '알고리즘', path: 'algorithms', publish: false },
 ]
 
 export default { math, computer }
