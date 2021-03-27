@@ -14,8 +14,35 @@
         </div>
       </div>
     </header>
-    <Nuxt />
+    <div class="w-full max-w-6xl mx-auto py-4 space-y-4">
+      <breadcrumbs
+        v-if="$route.path !== '/'"
+        :key="JSON.stringify(pathInfo.breadcrumbs)"
+        :paths="pathInfo.breadcrumbs"
+      />
+      <Nuxt />
+      <div
+        v-if="$route.path !== '/' && pathInfo.subBranches.length > 0"
+        class="shadow bg-white p-4 rounded-lg"
+      >
+        <branches
+          :key="JSON.stringify(pathInfo.subBranches)"
+          :branches="pathInfo.subBranches"
+        />
+      </div>
+    </div>
   </div>
 </template>
-
+<script>
+import Breadcrumbs from '~/components/ui/Breadcrumbs'
+import Branches from '~/components/ui/Branches'
+export default {
+  components: { Breadcrumbs, Branches },
+  computed: {
+    pathInfo() {
+      return this.$store.getters.pathInfo(this.$route.path)
+    },
+  },
+}
+</script>
 <style></style>

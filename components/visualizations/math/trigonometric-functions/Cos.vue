@@ -56,6 +56,7 @@ export default {
         p5.strokeWeight(1)
         p5.stroke(0)
         p5.line(...O, x, y)
+        p5.arc(...O, 20, 20, -t * Math.PI, 0)
       }
       function drawPoint() {
         p5.stroke(0)
@@ -77,7 +78,7 @@ export default {
         p5.rect(O - 2, y - 2, 5, 5)
       }
     }
-    this.p5 = new this.P5(sketch, this.$refs.container)
+    this.p5 = new this.$P5(sketch, this.$refs.container)
   },
 }
 </script>
