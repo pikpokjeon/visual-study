@@ -2,6 +2,24 @@
 export const state = () => ({
   lang: 'ko',
   routeTree: undefined,
+  categories: {
+    math: [
+      { title: '대수학', path: '/math/algebra', publish: false },
+      { title: '삼각법', path: '/math/trigonometry', publish: false },
+    ],
+    computer: [
+      {
+        depth: 1,
+        title: '컴퓨터 과학',
+        path: '/computer/computer-science',
+        publish: false,
+        subject : [{depth:2,title: '알고리즘',path: '/computer/algorithms', publish: false, }
+        ],
+      },
+      
+      { depth: 1,title: '인터넷', path: '/computer/internet', publish: false },
+    ]
+  }
 })
 
 export const mutations = {
@@ -59,6 +77,7 @@ export const getters = {
     return { breadcrumbs, subBranches }
     function breadcrumbFinder(branches, pathArr) {
       const branch = branches.get(pathArr.shift())
+      console.log(branches,branch,pathArr)
       breadcrumbs.push({
         localeName: branch.localeName,
         path: branch.path,
